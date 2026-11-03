@@ -57,5 +57,14 @@ int main()
 	}
 	std::cout << '\n';
 
+	std::vector<int> completedRows{ g.getCompletedRowIndices()};
+
+	for (const auto& element : completedRows)
+	{
+		std::cout << element << ' ';
+	}
+	std::cout << '\n';
+
+
 	return 0;
 }

@@ -202,7 +202,18 @@ void Gameboard::fillRow(int row, int content)
 // - return: a vector of completed row indices (integers).
 std::vector<int> Gameboard::getCompletedRowIndices() const
 {
-	return std::vector<int>{};
+	std::vector<int> completedRows{};
+
+	for (int y = 0; y < MAX_Y; y++)
+	{
+		if (isRowCompleted(y))
+		{
+			completedRows.push_back(y);
+		}
+	}
+
+	return completedRows;
+
 }
 
 // copy a source row's contents into a target row.
