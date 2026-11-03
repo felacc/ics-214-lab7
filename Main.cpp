@@ -65,6 +65,20 @@ int main()
 	}
 	std::cout << '\n';
 
+	g.printToConsole();
+
+	int x{ g.removeCompletedRows() };
+	g.printToConsole();
+	std::cout << x << '\n';
+
+	std::vector<Point> locs{ Point(0,0), Point(0,1) };
+	std::cout << g.areAllLocsEmpty(locs) << '\n';
+	
+	g.fillRow(0, 1);
+	//g.printToConsole();
+	std::cout << g.areAllLocsEmpty(locs) << '\n';
+
+
 
 	return 0;
 }

@@ -127,7 +127,18 @@ void Gameboard::setContent(std::vector<Point>& locs, int content)
 // - return: true if the content at ALL VALID points is EMPTY_BLOCK, false otherwise
 bool Gameboard::areAllLocsEmpty(const std::vector<Point>& locs) const
 {
-	return false;
+	for (const Point& loc : locs)
+	{
+		if (isValidPoint(loc))
+		{
+			if (grid[loc.getY()][loc.getX()] != EMPTY_BLOCK)
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 // Remove all completed rows from the board
@@ -136,7 +147,11 @@ bool Gameboard::areAllLocsEmpty(const std::vector<Point>& locs) const
 // - return: the count of completed rows removed
 int Gameboard::removeCompletedRows()
 {
-	return 0;
+	std::vector<int> completedRows{ getCompletedRowIndices() };
+
+	removeRows(completedRows);
+
+	return completedRows.size();
 }
 
 // A getter for the spawn location
@@ -144,16 +159,16 @@ int Gameboard::removeCompletedRows()
 // - returns: a Point, representing our private spawnLoc
 Point Gameboard::getSpawnLoc() const
 {
-	return Point{};
+	return spawnLoc;
 }
 
 
 // Determine if a given Point is a valid grid location
 // - param 1: a Point object
 // - return: true if the point is a valid grid location, false otherwise
-bool Gameboard::isValidPoint(const Point& p) const 
+bool Gameboard::isValidPoint(const Point& p) const
 {
-	return false;
+	return (p.getY() >= 0 && p.getY() <= MAX_Y) && (p.getX() >= 0 && p.getX() <= MAX_X);
 }
 
 // Determine if a given XY is a valid grid location
