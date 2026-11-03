@@ -3,7 +3,6 @@
 // constructor - empty() the grid
 Gameboard::Gameboard()
 {
-
 }
 
 // fill the board with EMPTY_BLOCK 
@@ -12,7 +11,6 @@ Gameboard::Gameboard()
 // - return: nothing
 void Gameboard::empty()
 {
-
 }
 
 // print the grid contents to the console (for debugging purposes)
@@ -133,7 +131,10 @@ bool Gameboard::isRowCompleted(int row) const
 // - return: nothing
 void Gameboard::fillRow(int row, int content)
 {
-
+	for (int col = 0; col < MAX_X; col++)
+	{
+		grid[row][col] = content;
+	}
 }
 
 // scan the board for completed rows.
