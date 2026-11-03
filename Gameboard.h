@@ -199,7 +199,7 @@ private:  // This is commented out to allow us to test.
 	//   Iterate through the vector, call removeRow() on each row index. 
 	// - param 1: a vector of integers representing row indices we want to remove
 	// - return: nothing
-	void removeRows(const std::vector<int>& rows);
+	void removeRows(std::vector<int>& rows);
 };
 
 #endif /* GAMEBOARD_H */

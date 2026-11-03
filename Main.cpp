@@ -41,5 +41,21 @@ int main()
 	g.removeRow(9);
 	g.printToConsole();
 
+	g.fillRow(0, 1);
+	g.fillRow(4, 1);
+	
+	g.printToConsole();
+
+	std::vector<int> arr{ 3, 2 }; // should get sorted and remove rows 2 & 3
+	g.removeRows(arr);
+
+	g.printToConsole();
+
+	for (const auto& element : arr)
+	{
+		std::cout << element << ' ';
+	}
+	std::cout << '\n';
+
 	return 0;
 }

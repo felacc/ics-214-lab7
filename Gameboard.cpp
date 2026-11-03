@@ -1,6 +1,7 @@
+#include <algorithm>
+#include <cassert>
 #include <iomanip>
 #include <iostream>
-#include <cassert>
 #include "Gameboard.h"
 
 // constructor - empty() the grid
@@ -252,7 +253,13 @@ void Gameboard::removeRow(int row)
 //   Iterate through the vector, call removeRow() on each row index. 
 // - param 1: a vector of integers representing row indices we want to remove
 // - return: nothing
-void Gameboard::removeRows(const std::vector<int>& rows) 
+void Gameboard::removeRows(std::vector<int>& rows) // side affect inputted array will be sorted
 {
+	sort(rows.begin(), rows.end()); // sort rows in ascending order
+	
+	for (auto& row : rows) // not sure if this should be auto or auto&? it is just an int?
+	{
+		removeRow(row);
+	}
 
 }
