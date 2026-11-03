@@ -3,6 +3,7 @@
 // constructor - empty() the grid
 Gameboard::Gameboard()
 {
+	empty();
 }
 
 // fill the board with EMPTY_BLOCK 
@@ -11,6 +12,10 @@ Gameboard::Gameboard()
 // - return: nothing
 void Gameboard::empty()
 {
+	for (int row = 0; row < MAX_Y; row++)
+	{
+		fillRow(row, EMPTY_BLOCK);
+	}
 }
 
 // print the grid contents to the console (for debugging purposes)
