@@ -129,7 +129,7 @@ bool Gameboard::isValidPoint(const Point& p) const
 // - return: true if the x,y is a valid grid location, false otherwise
 bool Gameboard::isValidPoint(int x, int y) const
 {
-	return false;
+	return (x >= 0 && x <= MAX_X) && (y >= 0 && y <= MAX_Y);
 }
 
 // return a bool indicating if a given row is full (no EMPTY_BLOCK in the row)
