@@ -77,7 +77,7 @@ int Gameboard::getContent(int x, int y) const
 // set the content at a given point (ignore invalid points)
 // - param 1: a Point
 // - param 2: an int representing the content we want to set at this location.
-void Gameboard::setContent(Point& p, int content)
+void Gameboard::setContent(const Point& p, int content)
 {
 	int x{ p.getX() };
 	int y{ p.getY() };
@@ -104,7 +104,7 @@ void Gameboard::setContent(int x, int y, int content)
 // set the content for a set of points (ignore invalid points)
 // - param 1: a vector of Points representing locations
 // - param 2: an int representing the content we want to set.
-void Gameboard::setContent(std::vector<Point>& locs, int content)
+void Gameboard::setContent(const std::vector<Point>& locs, int content)
 {
 	for (auto& p : locs)
 	{

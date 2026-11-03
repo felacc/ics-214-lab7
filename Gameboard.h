@@ -56,6 +56,7 @@
 class Gameboard
 {
 	friend int main();
+	friend class TestSuite;
 public:
 	// CONSTANTS
 	static const int MAX_X = 10;		// gameboard x dimension
@@ -107,7 +108,7 @@ public:
 	// set the content at a given point (ignore invalid points)
 	// - param 1: a Point
 	// - param 2: an int representing the content we want to set at this location.
-	void setContent(Point& p, int content);	
+	void setContent(const Point& p, int content);	
 
 	// set the content at an x,y position (ignore invalid points)
 	// - param 1: an int for X (column)
@@ -118,7 +119,7 @@ public:
 	// set the content for a set of points (ignore invalid points)
 	// - param 1: a vector of Points representing locations
 	// - param 2: an int representing the content we want to set.
-	void setContent(std::vector<Point>& locs, int content);		
+	void setContent(const std::vector<Point>& locs, int content);		
 
 	// Determine if (valid) all points passed in are empty
 	// *** IMPORTANT: Assume invalid x,y values can be passed to this method.

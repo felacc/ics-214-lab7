@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Gameboard.h"
 #include "Point.h"
+#include "TestSuite.h"
 
 int main()
 {
@@ -78,7 +79,7 @@ int main()
 	//g.printToConsole();
 	std::cout << g.areAllLocsEmpty(locs) << '\n';
 
-
+	TestSuite::runTestSuite();
 
 	return 0;
 }

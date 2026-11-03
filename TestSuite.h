@@ -6,7 +6,7 @@
 // 1) Call TestSuite::runTestSuite() from main()
 // 2) Uncomment the #define statements directly below:
 //-----------------------------------------------------------------------
-//#define GAMEBOARD
+#define GAMEBOARD
 
 class Gameboard;
 
