@@ -55,6 +55,7 @@
 
 class Gameboard
 {
+	friend int main();
 public:
 	// CONSTANTS
 	static const int MAX_X = 10;		// gameboard x dimension
@@ -139,7 +140,7 @@ public:
 	// - returns: a Point, representing our private spawnLoc
 	Point getSpawnLoc() const;
 
-//private:  // This is commented out to allow us to test. 
+private:  // This is commented out to allow us to test. 
 
 	// Determine if a given Point is a valid grid location
 	// - param 1: a Point object

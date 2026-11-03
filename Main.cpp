@@ -20,6 +20,19 @@ int main()
 	//g.getContent(invalidPoint);
 
 	g.fillRow(0, 3);
+	g.setContent(validPoint, 1);
+	g.setContent(1, 1, 2);
+	g.printToConsole();
+
+	std::cout << g.getContent(validPoint) << '\n'; // 1
+	std::cout << g.getContent(2, 0) << '\n'; // 3
+	std::cout << g.getContent(1, 1) << '\n'; // 2
+	std::cout << g.isRowCompleted(0) << '\n'; // 1
+	std::cout << g.isRowCompleted(1) << '\n'; // 0
+	
+	g.fillRow(2, 2);
+	g.printToConsole();
+	g.copyRowIntoRow(2, 1);
 	g.printToConsole();
 	
 	return 0;

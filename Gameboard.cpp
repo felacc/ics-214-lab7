@@ -207,9 +207,12 @@ std::vector<int> Gameboard::getCompletedRowIndices() const
 // - param 1: an int representing the source row index
 // - param 2: an int representing the target row index
 // - return: nothing
-void Gameboard::copyRowIntoRow(int src, int target)
+void Gameboard::copyRowIntoRow(int srcY, int targetY)
 {
-
+	for (int x = 0; x < MAX_X; x++)
+	{
+		grid[targetY][x] = grid[srcY][x];
+	}
 }
 	
 // In gameplay, when a full row is completed (filled with content)
