@@ -35,5 +35,11 @@ int main()
 	g.copyRowIntoRow(2, 1);
 	g.printToConsole();
 	
+	g.removeRow(1);
+	g.printToConsole();
+	
+	g.removeRow(9);
+	g.printToConsole();
+
 	return 0;
 }

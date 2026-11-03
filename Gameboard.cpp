@@ -44,6 +44,7 @@ void Gameboard::printToConsole() const
 		}
 		std::cout << '\n';
 	}
+	std::cout << '\n'; // print line under board for extra space
 }
 
 // get the content at a given point 
@@ -160,7 +161,7 @@ bool Gameboard::isValidPoint(const Point& p) const
 // - return: true if the x,y is a valid grid location, false otherwise
 bool Gameboard::isValidPoint(int x, int y) const
 {
-	return (x >= 0 && x <= MAX_X) && (y >= 0 && y <= MAX_Y);
+	return (x >= 0 && x < MAX_X) && (y >= 0 && y < MAX_Y);
 }
 
 // return a bool indicating if a given row is full (no EMPTY_BLOCK in the row)
@@ -169,7 +170,7 @@ bool Gameboard::isValidPoint(int x, int y) const
 // - return: bool representing if the row is completed
 bool Gameboard::isRowCompleted(int row) const
 {
-	assert(row >= 0 && row <= MAX_Y);
+	assert(row >= 0 && row < MAX_Y);
 
 	for (int col = 0; col < MAX_X; col++)
 	{
@@ -207,11 +208,11 @@ std::vector<int> Gameboard::getCompletedRowIndices() const
 // - param 1: an int representing the source row index
 // - param 2: an int representing the target row index
 // - return: nothing
-void Gameboard::copyRowIntoRow(int srcY, int targetY)
+void Gameboard::copyRowIntoRow(int srcRow, int targetRow)
 {
 	for (int x = 0; x < MAX_X; x++)
 	{
-		grid[targetY][x] = grid[srcY][x];
+		grid[targetRow][x] = grid[srcRow][x];
 	}
 }
 	
@@ -230,6 +231,17 @@ void Gameboard::copyRowIntoRow(int srcY, int targetY)
 // - return: nothing
 void Gameboard::removeRow(int row) 
 {
+	assert(row >= 0 && row < MAX_Y);
+	
+	for (int y = row; y >= 1; y--) // 1 is second row from the top
+	{
+		for (int x = 0; x < MAX_X; x++)
+		{
+			grid[y][x] = grid[y - 1][x];
+		}
+	}
+
+	fillRow(0, EMPTY_BLOCK); // fill first row with empty blocks
 
 }
 
