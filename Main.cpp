@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Gameboard.h"
+#include "Point.h"
 
 int main()
 {
@@ -12,6 +13,11 @@ int main()
 	std::cout << "(1,-2) = false: " << g.isValidPoint(1, -2) << '\n';
 	std::cout << "(11,2) = false: " << g.isValidPoint(11, 2) << '\n';
 	std::cout << "(1,20) = false: " << g.isValidPoint(1, 20) << '\n';
+
+	Point validPoint{};
+	Point invalidPoint{ -1, 2 };
+	g.getContent(validPoint);
+	//g.getContent(invalidPoint);
 	
 	return 0;
 }

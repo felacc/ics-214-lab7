@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <iostream>
+#include <cassert>
 #include "Gameboard.h"
 
 // constructor - empty() the grid
@@ -46,7 +47,12 @@ void Gameboard::printToConsole() const
 // - return: an int, the content from the grid at the specified point 
 int Gameboard::getContent(const Point& p) const
 {
-	return 0;
+	int x{ p.getX() };
+	int y{ p.getY() };
+	
+	assert(isValidPoint(x, y)); 
+	
+	return grid[y][x];
 }
 
 
@@ -57,7 +63,8 @@ int Gameboard::getContent(const Point& p) const
 // - return: an int, the content from the grid at the specified XY
 int Gameboard::getContent(int x, int y) const
 {
-	return 0;
+	assert(isValidPoint(x, y)); 
+	return grid[y][x];
 }
 
 // set the content at a given point (ignore invalid points)
@@ -65,6 +72,13 @@ int Gameboard::getContent(int x, int y) const
 // - param 2: an int representing the content we want to set at this location.
 void Gameboard::setContent(Point& p, int content)
 {
+	int x{ p.getX() };
+	int y{ p.getY() };
+
+	if (isValidPoint(x, y))
+	{
+		grid[y][x] = content;
+	}
 
 }
 
@@ -74,7 +88,10 @@ void Gameboard::setContent(Point& p, int content)
 // - param 3: an int representing the content we want to set at this location	
 void Gameboard::setContent(int x, int y, int content)
 {
-
+	if (isValidPoint(x, y))
+	{
+		grid[y][x] = content;
+	}
 }
 
 // set the content for a set of points (ignore invalid points)
@@ -82,7 +99,16 @@ void Gameboard::setContent(int x, int y, int content)
 // - param 2: an int representing the content we want to set.
 void Gameboard::setContent(std::vector<Point>& locs, int content)
 {
+	for (auto& p : locs)
+	{
+		int x{ p.getX() };
+		int y{ p.getY() };
 
+		if (isValidPoint(x, y))
+		{
+			grid[y][x] = content;
+		}
+	}
 }
 
 // Determine if (valid) all points passed in are empty
