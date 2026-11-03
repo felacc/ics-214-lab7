@@ -33,9 +33,14 @@ void Gameboard::printToConsole() const
 	{
 		for (int x = 0; x < MAX_X; x++)
 		{
-			char content{};
-			grid[y][x] == EMPTY_BLOCK ? content = '.' : content = static_cast<char>(grid[y][x]);
-			std::cout << std::setw(2) << content;
+			if (grid[y][x] == EMPTY_BLOCK)
+			{
+				std::cout << std::setw(2) << '.';
+			}
+			else
+			{
+				std::cout << std::setw(2) << grid[y][x];
+			}
 		}
 		std::cout << '\n';
 	}
@@ -164,7 +169,17 @@ bool Gameboard::isValidPoint(int x, int y) const
 // - return: bool representing if the row is completed
 bool Gameboard::isRowCompleted(int row) const
 {
-	return false;
+	assert(row >= 0 && row <= MAX_Y);
+
+	for (int col = 0; col < MAX_X; col++)
+	{
+		if (grid[row][col] == EMPTY_BLOCK)
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
 
 // fill a given grid row with specified content

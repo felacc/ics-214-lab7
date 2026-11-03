@@ -18,6 +18,9 @@ int main()
 	Point invalidPoint{ -1, 2 };
 	g.getContent(validPoint);
 	//g.getContent(invalidPoint);
+
+	g.fillRow(0, 3);
+	g.printToConsole();
 	
 	return 0;
 }
