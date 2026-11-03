@@ -1,3 +1,5 @@
+#include <iomanip>
+#include <iostream>
 #include "Gameboard.h"
 
 // constructor - empty() the grid
@@ -26,7 +28,16 @@ void Gameboard::empty()
 // - return: nothing
 void Gameboard::printToConsole() const
 {
-
+	for (int y = 0; y < MAX_Y; y++)
+	{
+		for (int x = 0; x < MAX_X; x++)
+		{
+			char content{};
+			grid[y][x] == EMPTY_BLOCK ? content = '.' : content = static_cast<char>(grid[y][x]);
+			std::cout << std::setw(2) << content;
+		}
+		std::cout << '\n';
+	}
 }
 
 // get the content at a given point 
